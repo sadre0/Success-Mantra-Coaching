@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Success Mantra Coaching Dhaka - Empowering students for academic excellence and competitive success.">
+    <meta name="keywords" content="Success Mantra Coaching Dhaka, education, coaching, study materials, results, live classes">
+    <meta name="author" content="Success Mantra Coaching Dhaka">
+    <title>Success Mantra Coaching Dhaka</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #00264d;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #cc5200;
+        }
+        footer {
+            background-color: #00264d;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Success Mantra Coaching Dhaka</h1>
+        <p>Empowering students for academic excellence and competitive success!</p>
+    </header>
+
+    <nav>
+        <a href="#result">Result</a>
+        <a href="#pdf">PDF</a>
+        <a href="#live">Live Classes</a>
+        <a href="#students">Students</a>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Success Mantra Coaching Dhaka</h2>
+        <p>Success Mantra Coaching Dhaka is committed to providing quality education to students of all levels. 
+        Our goal is to prepare students for board exams, competitive exams, and personal growth. 
+        With experienced faculty, comprehensive study materials, and live interactive sessions, 
+        we ensure that every student achieves their true potential.</p>
+        <p>Our coaching focuses on:</p>
+        <ul>
+            <li>Strengthening concepts with easy-to-understand teaching methods.</li>
+            <li>Providing personalized attention to every student.</li>
+            <li>Helping students prepare for board exams, NEET, JEE, and other competitive exams.</li>
+        </ul>
+    </section>
+
+    <!-- Result Section -->
+    <section id="result">
+        <h2>Check Your Result</h2>
+        <p>Enter your roll number to see your result:</p>
+        <input type="text" id="roll" placeholder="Enter Roll Number">
+        <button class="btn" onclick="checkResult()">Check Result</button>
+        <p id="resultMessage" style="margin-top: 10px;"></p>
+    </section>
+
+    <!-- PDF Section -->
+    <section id="pdf">
+        <h2>Download Study Materials</h2>
+        <ul>
+            <li><a href="class10.pdf" class="btn" download>Class 10 Notes</a></li>
+            <li><a href="class12.pdf" class="btn" download>Class 12 Notes</a></li>
+            <li><a href="exam_tips.pdf" class="btn" download>Exam Preparation Tips</a></li>
+        </ul>
+    </section>
+
+    <!-- Live Classes Section -->
+    <section id="live">
+        <h2>Join Live Classes</h2>
+        <p>Upcoming Live Classes:</p>
+        <ul>
+            <li>Maths: <a href="#" class="btn">Join Now</a></li>
+            <li>Science: <a href="#" class="btn">Join Now</a></li>
+            <li>English: <a href="#" class="btn">Join Now</a></li>
+        </ul>
+    </section>
+
+    <!-- Login/Register Section -->
+    <section id="students">
+        <h2>Student Section</h2>
+        <h3>Login</h3>
+        <form onsubmit="login(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter Username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button class="btn" type="submit">Login</button>
+        </form>
+        <p id="loginMessage" style="margin-top: 10px;"></p>
+
+        <h3>Register</h3>
+        <form onsubmit="register(event)">
+            <label for="newUsername">Username:</label>
+            <input type="text" id="newUsername" placeholder="Create Username" required>
+            <label for="newPassword">Password:</label>
+            <input type="password" id="newPassword" placeholder="Create Password" required>
+            <button class="btn" type="submit">Register</button>
+        </form>
+        <p id="registerMessage" style="margin-top: 10px;"></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Success Mantra Coaching Dhaka. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Result Functionality
+        function checkResult() {
+            const roll = document.getElementById('roll').value;
+            const results = {
+                "101": "Passed",
+                "102": "Failed",
+                "103": "Passed with Distinction"
+            };
+            const message = document.getElementById('resultMessage');
+
+            if (roll in results) {
+                message.textContent = `Result for Roll Number ${roll}: ${results[roll]}`;
+                message.style.color = "green";
+            } else if (roll === '') {
+                message.textContent = "Please enter your roll number!";
+                message.style.color = "red";
+            } else {
+                message.textContent = "Result not found!";
+                message.style.color = "red";
+            }
+        }
+
+        // Login/Register Functionality
+        const users = {};
+
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('loginMessage');
+
+            if (users[username] && users[username] === password) {
+                message.textContent = "Login successful!";
+                message.style.color = "green";
+            } else {
+                message.textContent = "Invalid username or password!";
+                message.style.color = "red";
+            }
+        }
+
+        function register(event) {
+            event.preventDefault();
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const message = document.getElementById('registerMessage');
+
+            if (users[newUsername]) {
+                message.textContent = "Username already exists!";
+                message.style.color = "red";
+            } else {
+                users[newUsername] = newPassword;
+                message.textContent = "Registration successful!";
+                message.style.color = "green";
+            }
+        }
+    </script>
+</body>
+</html>
